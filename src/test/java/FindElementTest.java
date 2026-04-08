@@ -53,6 +53,51 @@ public class FindElementTest {
         WebElement description = driver.findElement(By.className("description"));
         System.out.println(description.getText());
     }
+    
+    @
+    Test
+    public void findElementByLinkText(){
+        WebElement letCarWork = driver.findElement(By.linkText("Let car work"));
+        System.out.println(letCarWork.getText());
+    }
+
+    @Test
+    public void findElementByPartialLinkText(){
+        WebElement work = driver.findElement(By.partialLinkText("work"));
+        System.out.println(work.getText());
+    }
+
+    @Test
+    public void findElementByCssSelector(){
+        //driver.findElement(By.tagName("h1"));
+        driver.findElement(By.cssSelector("h1")); // для тега ничего не меняется
+        //driver.findElement(By.id("city"));
+        driver.findElement(By.cssSelector("#city")); //для id надо добавить #
+        //driver.findElement(By.className("telephone"));
+        driver.findElement(By.cssSelector(".telephone")); // для класса добавить точку .
+        //[attr='par']
+        driver.findElement(By.cssSelector("[href='/search']"));
+        driver.findElement(By.cssSelector("[for='city']"));
+        //contains -> *
+        driver.findElement(By.cssSelector("[href*='car']"));
+        //start -> ˆ
+        driver.findElement(By.cssSelector("[href^='/let']"));
+        //end -> $
+        driver.findElement(By.cssSelector("[href$='work']"));
+
+        //-----------composite css
+        //tag+class+pair
+        driver.findElement(By.cssSelector("a.navigation-link[href='/login']"));
+        //tag+class
+        driver.findElement(By.cssSelector("div.social-networks"));
+        //1 step down
+        driver.findElement(By.cssSelector(".header>.logo>img"));
+        //2 or more steps down
+        driver.findElement(By.cssSelector(".feedback-page .top-banner"));
+        WebElement element = driver.findElement(By.cssSelector(".feedback-card:nth-child(4)"));
+        System.out.println(element.getText());
+
+    }
 
     @AfterMethod
     public void tearDown(){
