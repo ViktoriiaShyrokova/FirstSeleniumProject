@@ -40,7 +40,23 @@ public class OpenWebShopTest {
         driver.findElement(By.cssSelector("[data-productid='72'] .rating"));// rating of third product
         driver.findElement(By.cssSelector("[data-productid='75'] .product-box-add-to-cart-button")); //add to card the last product
         driver.findElement(By.cssSelector(".my-account .ico-wishlist"));//wishlist at the footer
+    }
 
+    @Test
+    public void findElementsByXpath(){
+        driver.findElement(By.xpath("//img[@alt='Tricentis Demo Web Shop']"));//logo
+        driver.findElement(By.xpath("//a[@class='ico-login']")); // login link
+        driver.findElement(By.xpath("//input[contains(@class,'search-box-text')]")); //search in header
+        driver.findElement(By.xpath("//ul[@class='top-menu']//a[@href='/apparel-shoes']"));//nav menu item
+        List<WebElement> topMenu = driver.findElements(By.xpath("//ul[@class='top-menu']//a"));//whole list of menu
+        topMenu.forEach(a -> System.out.println(a.getText()));
+        driver.findElements(By.xpath("//*[@class='listbox']//a[@href='/jewelry']"));//listBox item
+        driver.findElements(By.xpath("//a[@class='nivo-nextNav']"));//next arrow for nivo main img
+        driver.findElements(By.xpath("//input[@id='pollanswers-3']"));//poll answer
+        driver.findElements(By.xpath("//a[@href='/producttag/6/computer']"));// tag from tags menu
+        driver.findElement(By.xpath("//*[@data-productid='72']//*[@class='rating']"));// rating of third product
+        driver.findElement(By.xpath("//*[@data-productid='75']//input[contains(@class,'product-box-add-to-cart-button')]")); //add to card the last product
+        driver.findElement(By.xpath("//*[@class='footer']//a[@class='ico-wishlist']"));//wishlist at the footer
     }
 
     @AfterMethod
